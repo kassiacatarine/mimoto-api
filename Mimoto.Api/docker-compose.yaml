@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mimotoapi:
+    image: mimoto/mimotoapi
+    build:
+      context: .
+    container_name: mimoto-api
+    ports:
+      - "20000:80"
+    networks:
+      - mimoto-production-network
+    depends_on:
+      - "redismimotoapi"
+
+  redismimotoapi:
+    image: redis:alpine
+    ports:
+      - "16379:6379"
+    networks:
+      - mimoto-production-network
+
+networks:
+    mimoto-production-network:
+        driver: bridge
