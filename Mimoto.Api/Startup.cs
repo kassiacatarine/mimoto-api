@@ -42,6 +42,7 @@ namespace Mimoto.Api
             });
 
             services.AddScoped<UserService>();
+            services.AddScoped<ServiceService>();
 
             services.Configure<DbSettings>(
                 options =>
