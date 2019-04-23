@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mimoto.Api", "Mimoto.Api\Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mimoto.Infrastructure", "Mimoto.Infrastructure\Mimoto.Infrastructure.csproj", "{76F12A48-02E5-4C34-AA26-1BC377D305BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mimoto.Application", "Mimoto.Application\Mimoto.Application.csproj", "{574126BF-9C71-492C-A0BC-09B0719FEB41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{76F12A48-02E5-4C34-AA26-1BC377D305BB}.Release|x64.Build.0 = Release|Any CPU
 		{76F12A48-02E5-4C34-AA26-1BC377D305BB}.Release|x86.ActiveCfg = Release|Any CPU
 		{76F12A48-02E5-4C34-AA26-1BC377D305BB}.Release|x86.Build.0 = Release|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Debug|x64.Build.0 = Debug|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Debug|x86.Build.0 = Debug|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Release|x64.ActiveCfg = Release|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Release|x64.Build.0 = Release|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Release|x86.ActiveCfg = Release|Any CPU
+		{574126BF-9C71-492C-A0BC-09B0719FEB41}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
