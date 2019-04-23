@@ -17,6 +17,7 @@ namespace Mimoto.Infrastructure
         }
 
         public IMongoCollection<User> Users => _db.GetCollection<User>("users");
+        public IMongoCollection<Service> Services => _db.GetCollection<Service>("services");
 
         // private void Map()
         // {

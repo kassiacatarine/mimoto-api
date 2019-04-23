@@ -23,7 +23,7 @@ namespace Mimoto.Api.Controllers
         }
 
         [HttpGet("{id:length(24)}", Name = "GetUser")]
-        public ActionResult<User> Get(string id)
+        public ActionResult<User> Get([FromRoute] string id)
         {
             var user = _userService.Get(id);
 
@@ -44,7 +44,7 @@ namespace Mimoto.Api.Controllers
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, User userIn)
+        public IActionResult Update([FromRoute] string id, User userIn)
         {
             var user = _userService.Get(id);
 
@@ -59,7 +59,7 @@ namespace Mimoto.Api.Controllers
         }
 
         [HttpDelete("{id:length(24)}")]
-        public IActionResult Delete(string id)
+        public IActionResult Delete([FromRoute] string id)
         {
             var user = _userService.Get(id);
 
