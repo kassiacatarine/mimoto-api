@@ -6,6 +6,6 @@ namespace Mimoto.Infrastructure.Data
     public interface IMimotoContext
     {
         IMongoCollection<User> Users { get; }
-        IMongoCollection<Service> Services { get; }
+        IMongoCollection<App> Apps { get; }
     }
 }

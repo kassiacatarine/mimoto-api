@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Mimoto.Application.Apps.Common;
 using Mimoto.Application.Services.Common;
 using Mimoto.Infrastructure;
 using Mimoto.Infrastructure.Data;
@@ -42,7 +43,7 @@ namespace Mimoto.Api
             });
 
             services.AddScoped<UserService>();
-            services.AddScoped<ServiceService>();
+            services.AddScoped<AppService>();
 
             services.Configure<DbSettings>(
                 options =>

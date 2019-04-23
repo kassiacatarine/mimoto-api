@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Mimoto.Domain.Common
 {
-    public class Service
+    public class App
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
