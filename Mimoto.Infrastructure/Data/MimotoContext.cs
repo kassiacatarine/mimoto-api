@@ -1,35 +1,29 @@
+using Microsoft.Extensions.Options;
 using Mimoto.Domain.Common;
+using Mimoto.Infrastructure.Data;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
 namespace Mimoto.Infrastructure
 {
-    public class MimotoContext
+    public class MimotoContext : IMimotoContext
     {
-        private readonly MongoClient _mongoClient;
-        private readonly IMongoDatabase _database;
+        private readonly IMongoDatabase _db;
 
-        public MimotoContext(string connectionString, string databaseName)
+        public MimotoContext(IOptions<DbSettings> settings, IMongoClient client)
         {
-            _mongoClient = new MongoClient(connectionString);
-            _database = _mongoClient.GetDatabase(databaseName);
-            Map();
+            _db = client.GetDatabase(settings.Value.Database);
+            // Map();
         }
 
-        internal IMongoCollection<User> Users
-        {
-            get
-            {
-                return _database.GetCollection<User>("users");
-            }
-        }
+        public IMongoCollection<User> Users => _db.GetCollection<User>("users");
 
-        private void Map()
-        {
-            BsonClassMap.RegisterClassMap<User>(cm =>
-            {
-                cm.AutoMap();
-            });
-        }
+        // private void Map()
+        // {
+        //     BsonClassMap.RegisterClassMap<User>(cm =>
+        //     {
+        //         cm.AutoMap();
+        //     });
+        // }
     }
 }
