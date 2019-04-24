@@ -7,5 +7,6 @@ namespace Mimoto.Infrastructure.Data
     {
         IMongoCollection<User> Users { get; }
         IMongoCollection<App> Apps { get; }
+        IMongoCollection<Company> Companies { get; }
     }
 }
