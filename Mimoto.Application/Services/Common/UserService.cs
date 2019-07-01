@@ -29,6 +29,12 @@ namespace Mimoto.Application.Services.Common
             return _context.Users.Find<User>(user => user.Id == id).FirstOrDefault();
         }
 
+        public User VerifySignIn(string email, string pass)
+        {
+            return _context.Users.Find<User>(user => user.Email == email &&
+                user.Password == pass).FirstOrDefault();    
+        }
+
         public User Create(UserProfileViewModel model)
         {
             var user = _mapper.Map<User>(model);
