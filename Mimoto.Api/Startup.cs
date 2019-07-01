@@ -17,6 +17,9 @@ using Mimoto.Infrastructure;
 using Mimoto.Infrastructure.Data;
 using MongoDB.Driver;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Mimoto.Api
 {
@@ -30,6 +33,10 @@ namespace Mimoto.Api
 
         public IConfiguration Configuration { get; }
 
+        public static string Issuer = "anything";
+        public static string Audience = "anything";
+        public static string Key = "INSANIDADE_PURA_MEU_IRMAO";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -42,6 +49,20 @@ namespace Mimoto.Api
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
+            });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Issuer,
+                    ValidAudience = Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Key))
+                };
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -77,6 +98,7 @@ namespace Mimoto.Api
                 _ => new MongoClient(Configuration.GetSection("MongoDb:ConnectionString").Value));
 
             services.AddTransient<IMimotoContext, MimotoContext>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,6 +128,7 @@ namespace Mimoto.Api
             app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
         }
     }
