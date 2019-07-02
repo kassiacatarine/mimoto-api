@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Mimoto.Application.Apps.Common;
 using Mimoto.Application.ViewModels.Common;
@@ -18,12 +19,14 @@ namespace Mimoto.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult<List<App>> Get()
         {
             return _appService.Get();
         }
 
         [HttpGet("{id:length(24)}", Name = "GetApp")]
+        [Authorize]
         public ActionResult<App> Get([FromRoute] string id)
         {
             var app = _appService.Get(id);
@@ -46,6 +49,7 @@ namespace Mimoto.Api.Controllers
 
 
         [HttpPut("{id:length(24)}")]
+        [Authorize]
         public IActionResult Update([FromRoute] string id, App appIn)
         {
             var app = _appService.Get(id);
@@ -61,6 +65,7 @@ namespace Mimoto.Api.Controllers
         }
 
         [HttpDelete("{id:length(24)}")]
+        [Authorize]
         public IActionResult Delete([FromRoute] string id)
         {
             var app = _appService.Get(id);

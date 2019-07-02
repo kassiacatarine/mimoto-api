@@ -16,5 +16,7 @@ namespace Mimoto.Domain.Common
         public string Email { get; set; }
         [BsonElement("location")]
         public string Location { get; set; }
+        [BsonElement("password")]
+        public string Password { get; set; }
     }
 }
