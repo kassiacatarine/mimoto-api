@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Mimoto.Application.ViewModels.Common;
 using Mimoto.Application.Services.Common;
 using Mimoto.Domain.Common;
 
@@ -35,12 +36,12 @@ namespace Mimoto.Api.Controllers
             return user;
         }
 
-        [HttpPost]
-        public ActionResult<User> Create(User user)
+        [HttpPost("profile")]
+        public ActionResult<UserProfileViewModel> Create([FromBody] UserProfileViewModel model)
         {
-            _userService.Create(user);
+            var user = _userService.Create(model);
 
-            return CreatedAtRoute("GetUser", new { id = user.Id.ToString() }, user);
+            return CreatedAtRoute("GetUser", new { id = user.Id.ToString() }, model);
         }
 
         [HttpPut("{id:length(24)}")]

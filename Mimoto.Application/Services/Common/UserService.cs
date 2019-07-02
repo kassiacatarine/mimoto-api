@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
+using Mimoto.Application.ViewModels.Common;
 using Mimoto.Domain.Common;
-using Mimoto.Infrastructure;
 using Mimoto.Infrastructure.Data;
 using MongoDB.Driver;
 
@@ -10,9 +11,12 @@ namespace Mimoto.Application.Services.Common
     public class UserService
     {
         private readonly IMimotoContext _context;
+        private readonly IMapper _mapper;
 
-        public UserService(IMimotoContext context) {
+        public UserService(IMimotoContext context, IMapper mapper)
+        {
             _context = context;
+            _mapper = mapper;
         }
 
         public List<User> Get()
@@ -25,8 +29,9 @@ namespace Mimoto.Application.Services.Common
             return _context.Users.Find<User>(user => user.Id == id).FirstOrDefault();
         }
 
-        public User Create(User user)
+        public User Create(UserProfileViewModel model)
         {
+            var user = _mapper.Map<User>(model);
             _context.Users.InsertOne(user);
             return user;
         }
