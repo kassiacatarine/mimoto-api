@@ -4,6 +4,7 @@ using Mimoto.Domain.Common;
 using Mimoto.Api;
 using Mimoto.Api.Helpers;
 using System;
+using Mimoto.Application.ViewModels.Common;
 
 namespace Mimoto.Api.Controllers
 {
@@ -16,6 +17,7 @@ namespace Mimoto.Api.Controllers
         {
             _userService = userService;
         }
+
         [HttpGet]
         public ActionResult<string> Get([FromQuery] string email, string senha)
         {
@@ -32,6 +34,14 @@ namespace Mimoto.Api.Controllers
 
 
             return tokenBuilder;
+        }
+
+        [HttpPost("singup")]
+        public ActionResult<UserSingupViewModel> Singup([FromBody] UserSingupViewModel model)
+        {
+            var user = _userService.Singup(model);
+
+            return CreatedAtRoute("GetUser", new { id = user.Id.ToString() }, model);
         }
     }
 }
