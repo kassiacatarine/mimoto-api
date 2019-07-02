@@ -11,6 +11,7 @@ namespace Mimoto.Application.Mappers
             CreateMap<User, UserProfileViewModel>().ReverseMap();
             CreateMap<Company, CompanyProfileViewModel>().ReverseMap();
             CreateMap<App, AppProfileViewModel>().ReverseMap();
+            CreateMap<User, UserLoginViewModel>().ReverseMap();
         }
     }
 }
