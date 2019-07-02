@@ -6,9 +6,9 @@ namespace Mimoto.Application.ViewModels.Common
     {
         [Required]
         public string Name { get; set; }
+        public string UserName { get; set; }
         [Required]
         public string Email { get; set; }
-        [Required]
         public string Location { get; set; }
     }
 }
