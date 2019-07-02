@@ -12,5 +12,10 @@ namespace Mimoto.Domain.Common
         public string Name { get; set; }
         [BsonElement("domain")]
         public string Domain { get; set; }
+        [BsonElement("companyId")]
+        public string CompanyId { get; set; }
+        [BsonElement("responsibleId")]
+        public string ResponsibleId { get; set; }
+
     }
 }

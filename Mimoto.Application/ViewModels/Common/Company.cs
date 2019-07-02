@@ -8,5 +8,7 @@ namespace Mimoto.Application.ViewModels.Common
         public string Name { get; set; }
         [Required]
         public string Cnpj { get; set; }
+        [Required]
+        public string ResponsibleId { get; set; }
     }
 }
