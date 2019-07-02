@@ -10,7 +10,7 @@ namespace Mimoto.Domain.Common
         public string Id { get; set; }
         [BsonElement("name")]
         public string Name { get; set; }
-        [BsonElement("alias")]
-        public string Alias { get; set; }
+        [BsonElement("domain")]
+        public string Domain { get; set; }
     }
 }

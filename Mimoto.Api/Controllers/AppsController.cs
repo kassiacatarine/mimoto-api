@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Mimoto.Application.Apps.Common;
+using Mimoto.Application.ViewModels.Common;
 using Mimoto.Domain.Common;
 
 namespace Mimoto.Api.Controllers
@@ -35,13 +36,14 @@ namespace Mimoto.Api.Controllers
             return app;
         }
 
-        [HttpPost]
-        public ActionResult<App> Create(App app)
+        [HttpPost("profile")]
+        public ActionResult<AppProfileViewModel> Create([FromBody] AppProfileViewModel model)
         {
-            _appService.Create(app);
+            var app = _appService.Create(model);
 
-            return CreatedAtRoute("GetApp", new { id = app.Id.ToString() }, app);
+            return CreatedAtRoute("GetApp", new { id = app.Id.ToString() }, model);
         }
+
 
         [HttpPut("{id:length(24)}")]
         public IActionResult Update([FromRoute] string id, App appIn)
