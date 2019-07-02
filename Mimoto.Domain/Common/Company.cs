@@ -10,5 +10,7 @@ namespace Mimoto.Domain.Common
         public string Id { get; set; }
         [BsonElement("name")]
         public string Name { get; set; }
+        [BsonElement("cnpj")]
+        public string Cnpj { get; set; }
     }
 }

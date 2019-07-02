@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using AutoMapper;
+using Mimoto.Application.ViewModels.Common;
 using Mimoto.Domain.Common;
 using Mimoto.Infrastructure.Data;
 using MongoDB.Driver;
@@ -8,9 +10,12 @@ namespace Mimoto.Application.Services.Common
     public class CompanyService
     {
         private readonly IMimotoContext _context;
+        private readonly IMapper _mapper;
 
-        public CompanyService(IMimotoContext context) {
+        public CompanyService(IMimotoContext context, IMapper mapper)
+        {
             _context = context;
+            _mapper = mapper;
         }
 
         public List<Company> Get()
@@ -23,8 +28,9 @@ namespace Mimoto.Application.Services.Common
             return _context.Companies.Find<Company>(company => company.Id == id).FirstOrDefault();
         }
 
-        public Company Create(Company company)
+        public Company Create(CompanyProfileViewModel model)
         {
+            var company = _mapper.Map<Company>(model);
             _context.Companies.InsertOne(company);
             return company;
         }

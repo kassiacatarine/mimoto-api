@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Mimoto.Application.Services.Common;
+using Mimoto.Application.ViewModels.Common;
 using Mimoto.Domain.Common;
 
 namespace Mimoto.Api.Controllers
@@ -35,12 +36,12 @@ namespace Mimoto.Api.Controllers
             return company;
         }
 
-        [HttpPost]
-        public ActionResult<Company> Create(Company company)
+        [HttpPost("profile")]
+        public ActionResult<CompanyProfileViewModel> Create([FromBody] CompanyProfileViewModel model)
         {
-            _companyService.Create(company);
+            var company = _companyService.Create(model);
 
-            return CreatedAtRoute("GetCompany", new { id = company.Id.ToString() }, company);
+            return CreatedAtRoute("GetCompany", new { id = company.Id.ToString() }, model);
         }
 
         [HttpPut("{id:length(24)}")]

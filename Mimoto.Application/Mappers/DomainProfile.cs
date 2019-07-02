@@ -9,6 +9,7 @@ namespace Mimoto.Application.Mappers
         public DomainProfile()
         {
             CreateMap<User, UserProfileViewModel>().ReverseMap();
+            CreateMap<Company, CompanyProfileViewModel>().ReverseMap();
         }
     }
 }
